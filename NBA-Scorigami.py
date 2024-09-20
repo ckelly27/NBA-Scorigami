@@ -2,30 +2,31 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# Step 1: Fetch the webpage
+# Fetch the webpage
 url = 'https://www.basketball-reference.com/leagues/NBA_2019_games-october.html'  # Replace with your URL
 response = requests.get(url)
 
-# Step 2: Parse the webpage content
+# Parse the webpage content
 if response.status_code == 200:
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    div_by_id = soup.find('div', id='div_schedule')  # Replace with actual div ID
-    print(div_by_id)
-
-    print("-----------------------------------------------------")
+    # Extracts the div containing the data
+    div_by_id = soup.find('div', id='div_schedule')  
+ 
+    # Extracts the rows containing the data
     rows = div_by_id.find_all("tr")
     print(rows)
 
     for row in rows:
-    # Try to find the visitor team name and score
+    # Extracts the visitor's team name and score
         visitor_team = row.find('td', {'data-stat': 'visitor_team_name'})
         visitor_score = row.find('td', {'data-stat': 'visitor_pts'})
 
-    # Try to find the home team name and score
+    # Extracts the home team's name and score
         home_team = row.find('td', {'data-stat': 'home_team_name'})
         home_score = row.find('td', {'data-stat': 'home_pts'})
 
+        # Extracts the date of the game
         # First argument of find method is 'th' because date is stored within a th tag in the html document
         game_date = row.find('th', {'data-stat': 'date_game'})
     
