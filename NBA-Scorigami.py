@@ -3,18 +3,18 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # Fetch the webpage
-url = 'https://www.basketball-reference.com/leagues/NBA_2019_games-october.html'  # Replace with your URL
+url = 'https://www.basketball-reference.com/leagues/NBA_2019_games-october.html'  
 response = requests.get(url)
 
 # Parse the webpage content
 if response.status_code == 200:
-    soup = BeautifulSoup(response.text, 'html.parser')
+    parsedHTML = BeautifulSoup(response.text, 'html.parser')
 
     # Extracts the div containing the data
-    div_by_id = soup.find('div', id='div_schedule')  
+    dataDiv = parsedHTML.find('div', id='div_schedule')  
  
     # Extracts the rows containing the data
-    rows = div_by_id.find_all("tr")
+    rows = dataDiv.find_all("tr")
     print(rows)
 
     for row in rows:
