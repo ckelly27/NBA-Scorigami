@@ -107,7 +107,4 @@ class getNBAData:
         else:
             self.errorList.append(response.status_code)
 
-if __name__ == "__main__":
-    m = getNBAData("october", 1977)
-    print(m.getGameData())
-    m.getError()
+
