@@ -39,21 +39,32 @@ class getNBAData:
     def getGameData(self):
         return self.gameData
     
-    # Loops through years and months til target date is reached
+    # Loops through years and months until target date is reached
     def getTargetData(self):
         for year in range(self.startYear, self.toYear + 1):
-            print(year)
-            for month in self.validMonths:
-                self.oneMonthData(month, year)
-                # Sleep to avoid error 429
-                #time.sleep(30)
-                if year == self.toYear and month == self.toMonth:
+            for i, month in enumerate(self.validMonths):
+                # Adjust year for months from January to June (new year)
+                if i >= 3:  # January (index 3) and beyond
+                    adjusted_year = year + 1
+                else:
+                    adjusted_year = year
+
+                self.oneMonthData(month, adjusted_year)
+                
+                # Sleep to avoid error 429 (12 requests/minute)
+                time.sleep(5)
+                
+                print(adjusted_year)
+                print(month)
+
+                # Stop when the target month and year are reached
+                if adjusted_year == self.toYear and month == self.toMonth:
                     return
     
     # Extracts the data from one month of one year
     def oneMonthData(self, month, year):
         # Fetch the webpage
-        url = "https://www.basketball-reference.com/leagues/NBA_" + str(year + 1) + "_games-" + month + ".html"  
+        url = "https://www.basketball-reference.com/leagues/NBA_" + str(year) + "_games-" + month + ".html"  
         response = requests.get(url)
 
         # Parse the webpage content
@@ -103,6 +114,13 @@ class getNBAData:
                         })
 
         else:
+            print("-" * 40)
+            print("ERROR:")
+            print(month)
+            print(year)
+            print(response.status_code)
+            print(url)
+            print("-" * 40)
             self.errorList.append(response.status_code)
 
 
