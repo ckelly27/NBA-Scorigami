@@ -1,31 +1,41 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import time
 
 class getNBAData:
 
     def __init__(self, toMonth, toYear):
+        self.errorList = []
         self.errorCount = 0
-        self.startYear = 1976
+        self.startYear = 1977
         self.startMonth = "october"
 
         self.toMonth = toMonth
-        self.toYear = toYear
+        self.toYear = toYear + 1
         # Initialize list of dictionaries of game data
         self.gameData = []
 
-        self.validMonths = ["october", "november", "december", "janurary", "february", "march", "april", "may", "june"]
+        self.validMonths = ["october", "november", "december", "january", "february", "march", "april", "may", "june"]
         if self.toMonth not in self.validMonths:
             print("invalid")
-            
+            return 0
 
+        self.getTargetData()
+        if len(self.errorList) != 0:
+            print("There may be some missing data.")
+
+        
+            
+    # Returns the number of errors
     def getError(self):
-        print(self.getError)
+        print(self.errorCount)
     
     # Returns the list of game data
     def getGameData(self):
         return self.gameData
     
+    # Loops through years and months til target date is reached
     def getTargetData(self):
         for year in range(self.startYear, self.toYear):
             for month in self.validMonths:
@@ -46,7 +56,7 @@ class getNBAData:
         
             # Extracts the rows containing the data
             rows = dataDiv.find_all("tr")
-            print(rows)
+            #print(rows)
 
             for row in rows:
             # Extracts the visitor's team name and score
@@ -75,10 +85,12 @@ class getNBAData:
 
                     else:
                     # Print the extracted information
-                        print(f"Visitor Team: {visitor_team_text} - {visitor_score_text}")
-                        print(f"Home Team: {home_team_text} - {home_score_text}")
-                        print(f"Game Date: {game_date_text}")
-                        print("-" * 40)
+                        #print(f"Visitor Team: {visitor_team_text} - {visitor_score_text}")
+                        #print(f"Home Team: {home_team_text} - {home_score_text}")
+                        #print(f"Game Date: {game_date_text}")
+                        #print("-" * 40)
+
+                        # Adds dictionary of the game to list of games
                         self.gameData.append({
                             'game_date': game_date_text,
                             'visitor_team': visitor_team_text,
@@ -86,17 +98,13 @@ class getNBAData:
                             'home_team': home_team_text,
                             'home_score': home_score_text
                         })
-                else:
-                    print("Some data missing in this row.")
-                    print("-" * 40)
+
 
 
         else:
-            print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
-            self.errorCount +=1
+            self.errorList.append(response.status_code)
 
 if __name__ == "__main__":
     m = getNBAData("october", 1977)
-    m.getTargetData()
-    print(m.getGameData())
+    #print(m.getGameData())
     m.getError()
