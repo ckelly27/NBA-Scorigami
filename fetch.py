@@ -25,12 +25,14 @@ class getNBAData:
         self.getTargetData()
         if len(self.errorList) != 0:
             print("There may be some missing data.")
+            print(self.errorList)
 
         
             
     # Returns the number of errors
     def getError(self):
         print(self.errorCount)
+        print(self.errorList)
     
     # Returns the list of game data
     def getGameData(self):
