@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
 class getNBAData:
 
@@ -44,7 +45,8 @@ class getNBAData:
             print(year)
             for month in self.validMonths:
                 self.oneMonthData(month, year)
-
+                # Sleep to avoid error 429
+                #time.sleep(30)
                 if year == self.toYear and month == self.toMonth:
                     return
     

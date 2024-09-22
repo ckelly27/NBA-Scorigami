@@ -41,16 +41,4 @@ class storeData:
 
         print("Data successfully written to " + self.fileName)
 
-# Example usage:
-if __name__ == "__main__":
-    # Fetch the NBA data using the getNBAData class from fetch.py
-    data_fetcher = getNBAData("november", 1977)
-    
-    # Fetch the data (which will populate the gameData)
-    print(data_fetcher.getGameData())
-    print(data_fetcher.getError())
-    
-    # Store the data using the storeData class
-    #data_saver = storeData(game_data)
-    #data_saver.saveToCSV()
 
