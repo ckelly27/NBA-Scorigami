@@ -12,9 +12,11 @@ class getNBAData:
 
         self.toMonth = toMonth
         self.toYear = toYear 
+        
         # Initialize list of dictionaries of game data
         self.gameData = []
 
+        # NBA seasons span this range of months
         self.validMonths = ["october", "november", "december", "january", "february", "march", "april", "may", "june"]
         if self.toMonth not in self.validMonths:
             print("invalid")
