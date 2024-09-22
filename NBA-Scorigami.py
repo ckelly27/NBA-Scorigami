@@ -12,7 +12,7 @@ class getNBAData:
         self.startMonth = "october"
 
         self.toMonth = toMonth
-        self.toYear = toYear + 1
+        self.toYear = toYear 
         # Initialize list of dictionaries of game data
         self.gameData = []
 
@@ -37,14 +37,18 @@ class getNBAData:
     
     # Loops through years and months til target date is reached
     def getTargetData(self):
-        for year in range(self.startYear, self.toYear):
+        for year in range(self.startYear, self.toYear + 1):
+            print(year)
             for month in self.validMonths:
                 self.oneMonthData(month, year)
+
+                if year == self.toYear and month == self.toMonth:
+                    return
     
     # Extracts the data from one month of one year
     def oneMonthData(self, month, year):
         # Fetch the webpage
-        url = 'https://www.basketball-reference.com/leagues/NBA_' + str(year) + '_games-' + month + '.html'  
+        url = 'https://www.basketball-reference.com/leagues/NBA_' + str(year + 1) + '_games-' + month + '.html'  
         response = requests.get(url)
 
         # Parse the webpage content
@@ -106,5 +110,5 @@ class getNBAData:
 
 if __name__ == "__main__":
     m = getNBAData("october", 1977)
-    #print(m.getGameData())
+    print(m.getGameData())
     m.getError()
