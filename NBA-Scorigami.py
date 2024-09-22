@@ -1,11 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
-import time
 
 class getNBAData:
 
     def __init__(self, toMonth, toYear):
+        # If there is trouble with the request, the error code is appended to this
         self.errorList = []
         self.errorCount = 0
         self.startYear = 1977
@@ -102,8 +101,6 @@ class getNBAData:
                             'home_team': home_team_text,
                             'home_score': home_score_text
                         })
-
-
 
         else:
             self.errorList.append(response.status_code)
