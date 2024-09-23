@@ -2,6 +2,7 @@ from storage import storeData
 from fetch import getNBAData
 import pandas as pd
 from datetime import date
+import time
 
 if __name__ == "__main__":
     # Dictionary of months of the NBA season
@@ -19,6 +20,9 @@ if __name__ == "__main__":
     print(currYear)
     print(currMonth)
 
+    # Start program timer
+    start_time = time.time()
+
     # Fetch the NBA data using the getNBAData class from fetch.py
     dataFetcher = getNBAData(currMonth, currYear)
     
@@ -29,3 +33,6 @@ if __name__ == "__main__":
     # Store the data using the storeData class
     data_saver = storeData(gameData)
     data_saver.saveToCSV()
+
+    # Print program runtime
+    print("--- %s seconds ---" % (time.time() - start_time))

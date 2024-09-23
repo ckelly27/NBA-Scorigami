@@ -18,7 +18,7 @@ class getNBAData:
         self.gameData = []
 
         # NBA seasons span this range of months
-        self.validMonths = ["october", "november", "december", "january", "february", "march", "april", "may", "june"]
+        self.validMonths = ["october", "november", "december", "january", "february", "march", "april", "may", "june", "july", "august", "september"]
         if self.toMonth not in self.validMonths:
             print("invalid")
             return 0
@@ -51,8 +51,8 @@ class getNBAData:
 
                 self.oneMonthData(month, adjusted_year)
                 
-                # Sleep to avoid error 429 (12 requests/minute)
-                time.sleep(5)
+                # Sleep to avoid error 429 (20 requests/minute)
+                time.sleep(3)
                 
                 print(adjusted_year)
                 print(month)
