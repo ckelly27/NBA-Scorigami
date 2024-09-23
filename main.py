@@ -28,7 +28,9 @@ if __name__ == "__main__":
     
     # Fetch the data (which will populate the gameData)
     gameData = dataFetcher.getGameData()
-    print(dataFetcher.getError())
+    
+    # Below retrieves the list of error codes encountered
+    #print(dataFetcher.getError())
     
     # Store the data using the storeData class
     data_saver = storeData(gameData)
