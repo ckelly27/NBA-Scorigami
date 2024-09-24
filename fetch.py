@@ -24,9 +24,6 @@ class getNBAData:
             return 0
 
         self.getTargetData()
-        if len(self.errorList) != 0:
-            print("There may be some missing data.")
-            print(self.errorList)
 
         
             
