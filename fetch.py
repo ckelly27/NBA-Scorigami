@@ -42,29 +42,18 @@ class getNBAData:
     # Loops through years and months until target date is reached
     def getTargetData(self):
         for year in range(self.startYear, self.toYear + 1):
-            for i, month in enumerate(self.validMonths):
-                # Adjust year for months from January to June (new year)
-                if i >= 3:  # January (index 3) and beyond
-                    adjusted_year = year + 1
-                else:
-                    adjusted_year = year
-
-                self.oneMonthData(month, adjusted_year)
-                
-                # Sleep to avoid error 429 (20 requests/minute)
+            for month in self.validMonths:
+                self.oneMonthData(month, year)
                 time.sleep(3)
-                
-                print(adjusted_year)
-                print(month)
 
-                # Stop when the target month and year are reached
-                if adjusted_year == self.toYear and month == self.toMonth:
+                if (year == self.toYear + 1) and month == self.toMonth:
                     return
     
     # Extracts the data from one month of one year
     def oneMonthData(self, month, year):
         # Fetch the webpage
         url = "https://www.basketball-reference.com/leagues/NBA_" + str(year) + "_games-" + month + ".html"  
+        print(url)
         response = requests.get(url)
 
         # Parse the webpage content
