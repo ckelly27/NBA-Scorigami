@@ -50,6 +50,7 @@ if __name__ == "__main__":
     
     checkCSV()
     df = pd.read_csv("NBAGameData.csv")
+
     
 
 

@@ -90,13 +90,33 @@ class getNBAData:
                         break
 
                     else:
+
+                        visitor_score_int = int(visitor_score_text)
+                        home_score_int = int(home_score_text)
+
+                            # Determine winning and losing teams and their scores
+                        if visitor_score_int > home_score_int:
+                            winning_team = visitor_team_text
+                            losing_team = home_team_text
+                            winning_score = visitor_score_int
+                            losing_score = home_score_int
+                        else:
+                            winning_team = home_team_text
+                            losing_team = visitor_team_text
+                            winning_score = home_score_int
+                            losing_score = visitor_score_int
+
                         # Adds dictionary of the game to list of games
                         self.gameData.append({
                             "game_date": game_date_text,
                             "visitor_team": visitor_team_text,
                             "visitor_score": visitor_score_text,
                             "home_team": home_team_text,
-                            "home_score": home_score_text
+                            "home_score": home_score_text,
+                            "winning_team": winning_team,
+                            "losing_team": losing_team,
+                            "winning_team_score": winning_score,
+                            "losing_team_score": losing_score
                         })
 
         else:
