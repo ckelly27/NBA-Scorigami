@@ -49,6 +49,7 @@ if __name__ == "__main__":
         currMonth = "june"
     
     checkCSV()
+    df = pd.read_csv("NBAGameData.csv")
     
 
     
