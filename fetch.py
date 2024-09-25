@@ -5,7 +5,7 @@ import time
 class getNBAData:
 
     def __init__(self, toMonth, toYear):
-        # If there is trouble with the request, the error code is appended to this
+        # If there is trouble with the request, the error code is appended to this array
         self.errorList = []
         self.errorCount = 0
         self.startYear = 1977
@@ -94,7 +94,7 @@ class getNBAData:
                         visitor_score_int = int(visitor_score_text)
                         home_score_int = int(home_score_text)
 
-                            # Determine winning and losing teams and their scores
+                        # Determine winning and losing teams and their scores
                         if visitor_score_int > home_score_int:
                             winning_team = visitor_team_text
                             losing_team = home_team_text
