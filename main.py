@@ -2,6 +2,7 @@ from storage import storeData
 from fetch import getNBAData
 import pandas as pd
 from datetime import date
+import matplotlib.pylab as plt
 import sys
 import time
 
@@ -53,8 +54,5 @@ if __name__ == "__main__":
 
     
 
-
-
-    
 
             
