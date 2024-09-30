@@ -4,7 +4,7 @@ Scorigami-tracking program for the NBA
 ### STILL WORK IN PROGRESS
 
 ### Why?
-Scorigami is a phenomenon in sports where the final score of a game is unique in the sense that no other game has ever had that same final score. This is something that is farily well-known and documented in the NFL. Another sport that I have interest in is basketball, particularly the NBA. I have found that scorigami in the NBA isn't really something that is well-known, nor is it documented as widely as it is in the NFL. This program seeks to remedy this disparity between the two leagues.
+Scorigami is a phenomenon in sports where the final score of a game is unique in the sense that no other game has ever had that same final score. This is something that is farily well-known and documented in the NFL. Another sport that I have interest in is basketball, particularly the NBA. I have found that scorigami in the NBA isn't really something that is well-known, nor is it documented as widely as it is in the NFL. This program seeks to remedy this disparity between the two leagues. I chose the starting point to be the 1976-1977 season, as this was when the NBA merged with the ABA. Do note that the code can easily be changed to account for earlier seasons, this was just a cutoff that I arbitrarily selected. 
 
 ### How?
 Data courtesy of https://www.basketball-reference.com <br><br>
