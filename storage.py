@@ -39,6 +39,6 @@ class storeData:
                 if gameTuple not in existingData:
                     writer.writerow(game)
 
-        print("Data successfully written to " + self.fileName)
+        print("Data written to " + self.fileName)
 
 
