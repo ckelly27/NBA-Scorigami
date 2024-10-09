@@ -45,8 +45,7 @@ if __name__ == "__main__":
     currMonth = monthDict.get(int(today[5:7]))
 
     # If current month isn't during NBA season, defaults to june (end of last season)
-    if currMonth == None:
-        currMonth = "june"
+    currMonth = "june" if currMonth == None else currMonth
     
     checkCSV()
     df = pd.read_csv("NBAGameData.csv")
