@@ -118,7 +118,7 @@ class getNBAData:
                             "winning_team_score": winning_score,
                             "losing_team_score": losing_score
                         })
-
+        ## Print erroneous month/year (for my own sake to see if the program was running properly)
         else:
             print("-" * 40)
             print("ERROR:")
