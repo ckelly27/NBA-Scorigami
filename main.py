@@ -49,6 +49,12 @@ if __name__ == "__main__":
     
     checkCSV()
     df = pd.read_csv("NBAGameData.csv")
+
+    """""
+    iterate through dataframe in order
+    create a dictionary, with keys being strings of final scores, and values being tuple of 
+    winning team, losing team, date
+    """""
     
 
     
